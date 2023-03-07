@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    padding-top: 65px;
+    padding-left: 85px;
+}
+
+p {
+    font-family: Roboto, Arial;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.icons {
+    width: 20px;
+}

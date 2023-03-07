@@ -1,0 +1,194 @@
+<html>
+
+<head>
+    <title>Prisca Todo App</title>
+</head>
+
+<body>
+    <button id="todo-button" onclick="changeText();">Todo</button>
+    <div id="counter">0</div>
+    <div>
+        <button onclick="increment();">Up</button>
+        <button onclick="decrease();">Down</button>
+    </div>
+
+    <div id="cart">
+
+    </div>
+    <div>
+        <button id="order" onclick="placeOrder();">Apple</button>
+        <button id="order" onclick="placeOrder();">Tomato</button>
+        <button id="order" onclick="placeOrder();">Egg</button>
+        <button id="clear" onclick="clear();">Clear</button>
+    </div>
+
+    <div id="receipt">
+
+    </div>
+
+    <div id="fruits">
+
+    </div>
+
+
+    <script>
+
+        document.getElementById("cart").innerHTML = 'Biscuit';
+
+        function addButton(text) {
+            let button = document.createElement('button');
+            button.innerText = text;
+            let element = document.createElement('div');
+            element.appendChild(button);
+            document.body.appendChild(element);
+        };
+
+        function addnums(nums) {
+            let sum = 0;
+            nums.forEach(function (num) {
+                sum += num;
+            });
+            console.log("The sum is: " + sum);
+        };
+
+
+        function addToTotal() {
+            let element = document.createElement('div');
+            element.innerHTML = total;
+        };
+
+
+
+        function arrayDouble(values) {
+            doubled = values.map(i => i.repeat(2))
+            console.log(doubled)
+        };
+
+
+        function cartTotal(cartArray) {
+            totalPrice = 0;
+            cartArray.forEach(function (object) {
+                price_ = object.price * object.quantity
+                totalPrice += price_
+            });
+            console.log("total Price is: " + totalPrice)
+        };
+
+
+
+        function changeText() {
+            button = document.getElementById("todo-button");
+            button.innerText = "Done";
+        };
+
+        function clear() {
+            document.getElementById("cart").innerHTML = ' ';
+        };
+
+
+        function createFoodOrders(foodOrders) {
+            let total = 0;
+            keys = Object.keys(foodOrders)
+            keys.forEach(function (key) {
+                let element = document.createElement('div')
+                element.style = 'margin-top:20px;'
+                let btn = document.createElement('button');
+                btn.innerText = "Add";
+                btn.onclick = addToTotal;
+                element.innerText = key + " " + foodOrders[key]
+                total += foodOrders[key]
+                element.appendChild(btn)
+                document.getElementById("fruits").appendChild(element);
+            });
+
+        };
+
+        function decrease() {
+            count -= 1
+            counter = document.getElementById("counter");
+            counter.innerText = count
+        };
+
+
+        function displayReceipt(cartArray) {
+            totalPrice = 0
+            document.getElementById("receipt").innerHTML = ' ';
+            cartArray.forEach(function (object) {
+                let element = document.createElement('div');
+                price_ = object.price * object.quantity;
+                totalPrice += price_
+                element.innerText = object.name + " $ " + object.price + " * " + object.quantity + " = " + price_;
+                document.getElementById("receipt").appendChild(element);
+            });
+            let element = document.createElement('div');
+            element.innerText = "Total price is: $" + totalPrice;
+            document.getElementById("receipt").appendChild(element);
+        }
+
+
+        function increment() {
+            let count = 0
+            count += 1
+            counter = document.getElementById("counter");
+            counter.innerText = count;
+
+        };
+
+        function placeOrder() {
+            let order = document.getElementById("order");
+
+            let element = document.createElement('div');
+            element.innerText = order.value
+            let new_div = document.getElementById("cart").appendChild(element)
+        };
+
+
+        function toUpper(lowers) {
+            Uppers = [];
+            lowers.forEach(function (lower) {
+                lower = lower.toUpperCase();
+                Uppers.push(lower);
+            });
+            console.log(Uppers);
+        };
+
+
+        let values = ["I", "love"];
+        let lowers = ["Hello", "World", "skies"];
+        let nums = [1, 2, 3, 4, 5, 6];
+        cartArray = [
+            {
+                name: "Alice in Brotherland",
+                price: 1000,
+                quantity: 2
+            },
+            {
+                name: "Crash Course in Romance",
+                price: 1000,
+                quantity: 10
+            },
+            {
+                name: "Physical 100",
+                price: 2000,
+                quantity: 5
+            }
+        ];
+        foodOrders = [{ Apples: 3, Oranges: 4, Pines: 5 }]
+
+
+        cartTotal(cartArray)
+        displayReceipt(cartArray)
+        toUpper(lowers);
+        arrayDouble(values);
+        addnums(nums)
+        createFoodOrders(foodOrders)
+
+        // addButton("Hi");
+        // addButton("You are welcome");
+
+
+        //Beware of type errors
+    </script>
+</body>
+
+</html>
